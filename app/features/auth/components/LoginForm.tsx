@@ -14,6 +14,7 @@ import { useNavigate } from "react-router"
 import { FormMessage } from "~/components/ui/form-message"
 import { Eye, EyeOff } from "lucide-react"
 import { useAutoDismiss } from "~/lib/hooks/useAutoDismiss"
+import { toast } from "sonner"
 
 export function LoginForm() {
   const navigate = useNavigate();
@@ -64,9 +65,8 @@ export function LoginForm() {
           throw new Error(`Unknown user role: ${user.role}`);
       }
     } catch (error) {
-      console.log(`Login error: ${error}`)
-    } finally {
-      console.log({isSubmitting, isRedirecting});
+      console.log(`Login error: ${error}`);
+      toast.error("Something went wrong. Please try again.");
     }
   }
 
