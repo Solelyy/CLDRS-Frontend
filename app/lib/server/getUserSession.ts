@@ -1,12 +1,10 @@
-// lib/server/getUserSession.ts
 import type { AuthUser } from "../types/authUser";
 import { API_BASE_URL } from "../utils/api";
 import { UserRole } from "../types/roles";
 
-// Optional proxy user for dev mode
+// proxy user for development for us not to run backend every time
 const PROXY_USER: AuthUser = {
-  id: "dev-1",
-  role: UserRole.LAB_ASSISTANT,
+  role: UserRole.LAB_ADMIN,
   employeeId: "DEV123",
   firstname: "Jessa",
   lastname: "Gozun",

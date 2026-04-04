@@ -1,12 +1,11 @@
 import { UserRole } from "./roles"
 
 export type LoginCredentials = {
-  email: string,
+  employeeId: string,
   password: string
 }
 
 export type AuthUser = {
-  id: string;
   role: UserRole;
   employeeId: string;
   firstname: string;

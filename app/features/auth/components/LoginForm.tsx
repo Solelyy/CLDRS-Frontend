@@ -76,23 +76,23 @@ export function LoginForm() {
         <CardHeader>
           <CardTitle className="text-center text-lg">Login in to CLDRS</CardTitle>
           <CardDescription className="text-center">
-            Enter your email below to login to your account
+            Enter your credentials below to login to your account
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <FieldLabel htmlFor="employeeId">Employee ID</FieldLabel>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="juandelacruz@gmail.com"
-                  {...register("email", {
-                    required: "Email is required",
+                  id="employeeId"
+                  type="text"
+                  placeholder="QCU12345"
+                  {...register("employeeId", {
+                    required: "Employee ID is required",
                   })}
                 />
-                {errors.email && <FormMessage variant="error" message={errors.email.message}/>}
+                {errors.employeeId && <FormMessage variant="error" message={errors.employeeId.message}/>}
               </Field>
 
               <Field>
