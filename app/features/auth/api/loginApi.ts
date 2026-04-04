@@ -3,8 +3,9 @@ import type { LoginCredentials } from "~/lib/types/authUser";
 import type { AuthUser } from "~/lib/types/authUser";
 import { API_BASE_URL } from "~/lib/utils/api";
 
-export async function loginAuthApi(data: LoginCredentials): 
-Promise<{ user: AuthUser | null; error: string | null }> {
+export async function loginAuthApi(data: LoginCredentials): Promise<{ 
+  user: AuthUser | null; error: string | null }> 
+  {
   const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

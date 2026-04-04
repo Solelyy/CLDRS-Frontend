@@ -11,5 +11,4 @@ export type AuthUser = {
   employeeId: string;
   firstname: string;
   lastname: string;
-  email: string;
 };

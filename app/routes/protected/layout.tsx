@@ -2,15 +2,15 @@
 import { Outlet, redirect } from "react-router";
 import type { Route } from ".react-router/types/app/+types/root";
 
-import { getUserFromSession } from "~/lib/server/getUserSession";
+import { getAuthUser } from "~/lib/server/getUserSession";
 import { userContext } from "~/lib/server/userContext";
 
 // auth middleware
 async function authMiddleware({ request, context }: any) {
-    const user = await getUserFromSession(request);
+    const user = await getAuthUser(request);
 
     if (!user) {
-        throw redirect("/");
+        throw redirect("/unauthorized");
     }
 
     // make user available to children

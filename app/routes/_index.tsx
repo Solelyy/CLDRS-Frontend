@@ -15,9 +15,11 @@ export default function Home() {
     return (
         <div className="flex flex-col gap-8 ">
             <Header/>
-            <div className="mx-auto w-full max-w-md mt-10 sm:mt-8">
-                <LoginForm />
-            </div>
+            <main className="flex w-full flex-col items-center justify-start px-6 pb-16">
+                <div className="w-full max-w-md mt-10 sm:mt-8">
+                    <LoginForm />
+                </div>
+            </main>
         </div>
     );
 }
