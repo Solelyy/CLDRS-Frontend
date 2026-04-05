@@ -19,7 +19,8 @@ export async function getAuthUser(request: Request): Promise<AuthUser | null> {
   }
 
   const cookie = request.headers.get("cookie") || "";
-  if (userCache.has(cookie)) return userCache.get(cookie)!;
+  if (userCache.has(cookie)) return userCache.get(cookie)!; // use non-null assertion operator to guarantee TS the cookie exists
+  //it returns the user if cookie exists already in userCache so we dont need to call the api again.
 
   try {
     const response = await fetch(`${API_BASE_URL}/auth/me`, {
@@ -28,7 +29,7 @@ export async function getAuthUser(request: Request): Promise<AuthUser | null> {
       credentials: "include",
       cache: "no-store",
     });
-
+    console.log("Cookie from header: ", cookie);
     if (!response.ok) return null;
 
     const data: AuthUser = await response.json();
