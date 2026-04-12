@@ -3,6 +3,7 @@ import { API_BASE_URL } from "../utils/api";
 import { UserRole } from "../types/roles";
 
 // proxy user for development for us not to run backend every time
+//comment this out kapag nakarun na backend
 const PROXY_USER: AuthUser = {
   role: UserRole.LAB_ADMIN,
   employeeId: "DEV123",
@@ -14,16 +15,20 @@ const PROXY_USER: AuthUser = {
 const userCache = new Map<string, AuthUser>();
 
 export async function getAuthUser(request: Request): Promise<AuthUser | null> {
+  //comment this out kapag nakarun na backend
   if (process.env.NODE_ENV === "development") {
     return PROXY_USER;
-  }
+  } 
 
   const cookie = request.headers.get("cookie") || "";
   if (userCache.has(cookie)) return userCache.get(cookie)!; // use non-null assertion operator to guarantee TS the cookie exists
   //it returns the user if cookie exists already in userCache so we dont need to call the api again.
 
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/me`, {
+    //pakilagay yung endpoint para makuha ung user
+    const endpoint = "/";
+
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       method: "GET",
       headers: { cookie },
       credentials: "include",

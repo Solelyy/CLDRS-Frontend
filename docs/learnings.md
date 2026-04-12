@@ -28,9 +28,9 @@
     if (user) return user;
 
 ## Middleware
-- this function runs before the route renders
+- this runs before the route renders
 - we can put the middleware to the layout.tsx to guard our routes
-- in rr7, the requst it is automatically given and ready to use, 
+- in rr7, the request it is automatically given and ready to use, 
 ex:
     async function authMiddleware( { request, context }: any ){}
 - the request is the GET request made everytime we go to a specific route

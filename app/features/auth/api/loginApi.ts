@@ -6,7 +6,11 @@ import { API_BASE_URL } from "~/lib/utils/api";
 export async function loginAuthApi(data: LoginCredentials): Promise<{ 
   user: AuthUser | null; error: string | null }> 
   {
-  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+  
+  //put here ung endpoint paki dugtungan wag tanggalin ung slash
+  const endpoint = "/";
+
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -19,6 +23,7 @@ export async function loginAuthApi(data: LoginCredentials): Promise<{
     statusText: response.statusText,
   });
 
+  //sa status code to na binabalik ng backend, wag muna intindihin for now
     if (response.status === 429) return { user: null, error: getAuthError("locked") };
     if (response.status === 404) return { user: null, error: getAuthError("blocked") };
     if (response.status === 400 ) return { user: null, error: getAuthError("default") };
